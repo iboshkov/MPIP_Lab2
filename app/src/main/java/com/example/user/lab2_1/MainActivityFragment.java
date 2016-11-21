@@ -39,6 +39,7 @@ public class MainActivityFragment extends Fragment implements GradoviAdapter.Gra
         }
         adapter.addListener(this);
 
+        Log.i("Lifecycle", "MainActivityFragment.onCreateView");
 
         return v;
     }

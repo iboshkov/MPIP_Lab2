@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -39,12 +40,14 @@ public class MainActivity extends AppCompatActivity implements GradoviAdapter.Gr
         mainFragment.getAdapter().addListener(this);
 
         updateData();
+        Log.i("Lifecycle", "MainActivity.onCreate");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        Log.i("Lifecycle", "MainActivity.onCreateOptionsMenu");
         return true;
     }
 
@@ -117,10 +120,37 @@ public class MainActivity extends AppCompatActivity implements GradoviAdapter.Gr
         } else {
             super.onBackPressed();
         }
+        Log.i("Lifecycle", "MainActivity.onBackPressed");
     }
     @Override
     public void gradoviError() {
         progress.hide();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("Lifecycle", "MainActivity.onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("Lifecycle", "MainActivity.onResume");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("Lifecycle", "MainActivity.onPause");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("Lifecycle", "MainActivity.onStop");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("Lifecycle", "MainActivity.onDestroy");
     }
 
     @Override

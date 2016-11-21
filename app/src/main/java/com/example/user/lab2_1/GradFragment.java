@@ -3,6 +3,7 @@ package com.example.user.lab2_1;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,8 @@ public class GradFragment extends Fragment {
         }
 
         Toast.makeText(getActivity(), mGrad.name, Toast.LENGTH_SHORT).show();
+
+        Log.i("Lifecycle", "GradFragment.onCreate");
     }
 
     @Override
@@ -87,6 +90,7 @@ public class GradFragment extends Fragment {
         tv = (TextView) view.findViewById(R.id.geoId);
         tv.setText(Integer.toString(mGrad.geoNameId));
 
+        Log.i("Lifecycle", "GradFragment.onCreateView");
         return view;
     }
 
@@ -94,6 +98,7 @@ public class GradFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.i("Lifecycle", "GradFragment.onAttach");
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
@@ -105,6 +110,7 @@ public class GradFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        Log.i("Lifecycle", "GradFragment.onDetach");
         mListener = null;
     }
 
